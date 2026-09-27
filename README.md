@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Arsen 2026 - Prototype Project
 
-## Getting Started
+Inisialisasi project Next.js modern, lengkap, dan terstruktur untuk pengembangan prototype kompetisi/inovasi Arsen 2026.
 
-First, run the development server:
+## 🚀 Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) 16 (App Router)
+- **Library:** [React](https://react.dev/) 19
+- **Bahasa:** [TypeScript](https://www.typescriptlang.org/) 5
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/) v4
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Utilities:** `clsx`, `tailwind-merge` (`cn` helper)
+- **Linter & Formatter:** ESLint 9
+
+---
+
+## 📁 Struktur Direktori
+
+```text
+c:\Uner\Lomba\Arsen\2026\Prototype\
+├── public/                 # Static assets (images, svg, favicons)
+├── src/
+│   ├── app/                # Next.js App Router
+│   │   ├── api/            # API Route handlers (contoh: /api/health)
+│   │   ├── layout.tsx      # Root layout (Navbar & Footer included)
+│   │   ├── page.tsx        # Homepage / Landing page prototype
+│   │   └── globals.css     # Tailwind v4 configuration & base styles
+│   ├── components/
+│   │   ├── ui/             # Reusable atomic UI (Button, Card, Badge, dll)
+│   │   ├── layout/         # Layout components (Navbar, Footer, dll)
+│   │   └── home/           # Feature-specific components
+│   ├── hooks/              # Custom React hooks (contoh: use-mounted)
+│   ├── lib/                # Utilities & helpers (contoh: utils.ts / cn)
+│   └── types/              # Definisi interface & type TypeScript
+├── .env.example            # Template environment variables
+├── .env.local              # Local environment configuration
+├── next.config.ts          # Konfigurasi Next.js
+├── package.json            # Daftar script & dependencies
+└── tsconfig.json           # Konfigurasi TypeScript
+```
+
+---
+
+## 🛠️ Cara Menjalankan
+
+### 1. Development Server
+Jalankan server pengembangan lokal:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka [http://localhost:3000](http://localhost:3000) di browser untuk melihat hasilnya.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. Build Production
+Untuk memastikan tidak ada type error atau linting issue:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+### 3. Production Server
+Menjalankan hasil build:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Linting
+```bash
+npm run lint
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🔌 API Endpoint Bawaan
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **`GET /api/health`**
+  - Return JSON status health check server untuk menguji konektivitas client-backend.
