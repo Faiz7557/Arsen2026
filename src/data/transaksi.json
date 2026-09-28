@@ -1,0 +1,101 @@
+[
+  {
+    "id": "TRX-20260928-001",
+    "umkmId": "umkm-01",
+    "customerName": "Rizky Fauzan",
+    "amount": 45000,
+    "method": "QRIS",
+    "category": "Soto Ayam + Es Teh Manis",
+    "timestamp": "2026-09-28T13:42:15+07:00",
+    "referenceNumber": "QRIS-ID-8829104",
+    "status": "success"
+  },
+  {
+    "id": "TRX-20260928-002",
+    "umkmId": "umkm-01",
+    "customerName": "Siti Nurhaliza",
+    "amount": 82000,
+    "method": "QRIS",
+    "category": "2x Soto Daging Spesial",
+    "timestamp": "2026-09-28T13:15:40+07:00",
+    "referenceNumber": "QRIS-ID-8829103",
+    "status": "success"
+  },
+  {
+    "id": "TRX-20260928-003",
+    "umkmId": "umkm-01",
+    "customerName": "Budi Santoso",
+    "amount": 28000,
+    "method": "E-Wallet",
+    "category": "Soto Campur + Perkedel",
+    "timestamp": "2026-09-28T12:50:22+07:00",
+    "referenceNumber": "EWL-GOP-991023",
+    "status": "success"
+  },
+  {
+    "id": "TRX-20260928-004",
+    "umkmId": "umkm-01",
+    "customerName": "Kantor Notaris Wijaya (Pak Darto)",
+    "amount": 260000,
+    "method": "Transfer Bank",
+    "category": "Pesanan Makan Siang 8 Porsi",
+    "timestamp": "2026-09-28T12:10:05+07:00",
+    "referenceNumber": "TRF-BCA-449102",
+    "status": "success"
+  },
+  {
+    "id": "TRX-20260928-005",
+    "umkmId": "umkm-01",
+    "customerName": "Anita Permata",
+    "amount": 35000,
+    "method": "QRIS",
+    "category": "Soto Ayam Suwir",
+    "timestamp": "2026-09-28T11:45:19+07:00",
+    "referenceNumber": "QRIS-ID-8829101",
+    "status": "success"
+  },
+  {
+    "id": "TRX-20260928-006",
+    "umkmId": "umkm-01",
+    "customerName": "Wawan Setiawan",
+    "amount": 22000,
+    "method": "Tunai (Dicatat Kasir)",
+    "category": "Soto Reguler",
+    "timestamp": "2026-09-28T10:30:12+07:00",
+    "referenceNumber": "CSH-MTC-00109",
+    "status": "success"
+  },
+  {
+    "id": "TRX-20260928-007",
+    "umkmId": "umkm-01",
+    "customerName": "Pelanggan Offline (Mode Lite)",
+    "amount": 18000,
+    "method": "USSD Mode",
+    "category": "Menu Sarapan",
+    "timestamp": "2026-09-28T08:15:33+07:00",
+    "referenceNumber": "USSD-*141*98#",
+    "status": "success"
+  },
+  {
+    "id": "TRX-20260927-010",
+    "umkmId": "umkm-01",
+    "customerName": "Dimas Nugraha",
+    "amount": 74000,
+    "method": "QRIS",
+    "category": "Soto Spesial + Kerupuk Kaleng",
+    "timestamp": "2026-09-27T19:22:10+07:00",
+    "referenceNumber": "QRIS-ID-8818044",
+    "status": "success"
+  },
+  {
+    "id": "TRX-20260927-011",
+    "umkmId": "umkm-01",
+    "customerName": "Rina Marlina",
+    "amount": 115000,
+    "method": "QRIS",
+    "category": "Paket Keluarga 3 Porsi",
+    "timestamp": "2026-09-27T18:40:00+07:00",
+    "referenceNumber": "QRIS-ID-8818043",
+    "status": "success"
+  }
+]

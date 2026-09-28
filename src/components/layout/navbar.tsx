@@ -1,60 +1,178 @@
 "use client";
 
+import React, { useState } from "react";
 import Link from "next/link";
-import { Sparkles, Terminal } from "lucide-react";
+import { usePathname } from "next/navigation";
+import {
+  CreditCard,
+  Gauge,
+  Network,
+  BarChart3,
+  Sparkles,
+  LayoutDashboard,
+  Compass,
+  RotateCcw,
+  Menu,
+  X,
+  Store,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-function GithubIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      role="img"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-    >
-      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-    </svg>
-  );
-}
+import { Badge } from "@/components/ui/badge";
+import { useGiat } from "@/context/giat-context";
 
 export function Navbar() {
+  const pathname = usePathname();
+  const { activeUmkm, umkms, setActiveUmkmId, resetDemoData } = useGiat();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const navLinks = [
+    { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+    { href: "/kasir", label: "GIAT Kasir", icon: CreditCard, badge: "Modul 1" },
+    { href: "/score", label: "GIAT Score", icon: Gauge, badge: "Modul 2" },
+    { href: "/connect", label: "GIAT Connect", icon: Network, badge: "Modul 3" },
+    { href: "/analytics", label: "Analisis Wilayah", icon: BarChart3 },
+    { href: "/demo", label: "Demo Panduan", icon: Compass },
+  ];
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-zinc-200/80 dark:border-zinc-800 bg-white/80 dark:bg-black/80 backdrop-blur-md">
-      <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2.5 font-bold text-lg text-zinc-900 dark:text-zinc-50 tracking-tight">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white shadow-md shadow-blue-500/20">
+    <header className="sticky top-0 z-40 w-full border-b border-zinc-200/80 dark:border-zinc-800 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md transition-colors">
+      <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 gap-4">
+        {/* Brand / Logo */}
+        <Link href="/" className="flex items-center gap-2.5 font-extrabold text-lg tracking-tight group">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-500 text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
             <Sparkles className="h-5 w-5" />
           </div>
-          <span>Arsen Prototype</span>
+          <div className="flex flex-col">
+            <div className="flex items-center gap-1.5">
+              <span className="font-black text-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 bg-clip-text text-transparent">
+                GIAT
+              </span>
+              <Badge variant="outline" className="text-[10px] py-0 px-1.5 font-mono border-blue-400/40 text-blue-600 dark:text-blue-400">
+                ASICM036
+              </Badge>
+            </div>
+            <span className="text-[10px] text-zinc-500 dark:text-zinc-400 -mt-1 hidden sm:inline">
+              Awakening The Sleeping Giant
+            </span>
+          </div>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-zinc-600 dark:text-zinc-300">
-          <Link href="#features" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-            Fitur
-          </Link>
-          <Link href="#tech-stack" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-            Tech Stack
-          </Link>
-          <Link href="#structure" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-            Arsitektur
-          </Link>
+        {/* Desktop Nav */}
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-sm font-medium">
+          {navLinks.map((item) => {
+            const Icon = item.icon;
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                  isActive
+                    ? "bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 font-semibold"
+                    : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/60"
+                }`}
+              >
+                <Icon className="h-4 w-4" />
+                <span>{item.label}</span>
+                {item.badge && (
+                  <span className="text-[9px] px-1 py-0.2 rounded font-mono bg-blue-100/70 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300">
+                    {item.badge}
+                  </span>
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <Link href="https://github.com/Faiz7557/Arsen2026" target="_blank" rel="noreferrer">
-            <Button variant="ghost" size="sm" className="hidden sm:inline-flex gap-2">
-              <GithubIcon className="h-4 w-4" />
-              <span>Repository</span>
-            </Button>
-          </Link>
-          <a href="#features">
-            <Button variant="primary" size="sm" className="gap-2">
-              <Terminal className="h-4 w-4" />
-              <span>Mulai Explore</span>
-            </Button>
-          </a>
+        {/* Right Action: Active UMKM Switcher + Reset Demo */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Quick UMKM Switcher Dropdown */}
+          <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-xs">
+            <Store className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+            <select
+              aria-label="Pilih UMKM Aktif"
+              value={activeUmkm.id}
+              onChange={(e) => setActiveUmkmId(e.target.value)}
+              className="bg-transparent font-medium text-zinc-700 dark:text-zinc-300 focus:outline-none cursor-pointer max-w-[130px] truncate"
+            >
+              {umkms.map((u) => (
+                <option key={u.id} value={u.id} className="dark:bg-zinc-900">
+                  {u.avatar} {u.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={resetDemoData}
+            title="Reset data transaksi demo ke default"
+            className="text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 h-8 px-2"
+          >
+            <RotateCcw className="h-3.5 w-3.5" />
+            <span className="hidden md:inline text-xs ml-1">Reset Demo</span>
+          </Button>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden p-2 rounded-lg text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+            aria-label="Toggle Navigation"
+          >
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Drawer */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-4 space-y-3">
+          <div className="flex items-center justify-between pb-3 border-b border-zinc-100 dark:border-zinc-800">
+            <span className="text-xs font-semibold text-zinc-500">Pilih Profil UMKM:</span>
+            <select
+              aria-label="Pilih Profil UMKM Mobile"
+              value={activeUmkm.id}
+              onChange={(e) => setActiveUmkmId(e.target.value)}
+              className="text-xs p-1 rounded border dark:bg-zinc-900 border-zinc-300 dark:border-zinc-700"
+            >
+              {umkms.map((u) => (
+                <option key={u.id} value={u.id}>
+                  {u.avatar} {u.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="grid grid-cols-1 gap-1">
+            {navLinks.map((item) => {
+              const Icon = item.icon;
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`flex items-center justify-between p-2.5 rounded-lg text-sm ${
+                    isActive
+                      ? "bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 font-bold"
+                      : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5">
+                    <Icon className="h-4 w-4" />
+                    <span>{item.label}</span>
+                  </div>
+                  {item.badge && (
+                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300">
+                      {item.badge}
+                    </span>
+                  )}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </header>
   );
 }

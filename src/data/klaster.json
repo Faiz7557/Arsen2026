@@ -1,0 +1,100 @@
+{
+  "spatialModel": {
+    "title": "K-means Clustering & Spatial Error Model Analysis",
+    "dependentVariable": "Produktivitas Usaha Mikro (Nilai Tambah per Tenaga Kerja)",
+    "moransI": 0.1602,
+    "pValue": 0.059,
+    "pseudoR": 0.2946,
+    "aic": 20.99,
+    "interpretation": "Nilai Moran's I mengonfirmasi autokorelasi spasial positif: inefisiensi ekonomi di satu wilayah cenderung menular ke wilayah tetangganya. Pemulihan ekosistem di satu wilayah akan memicu efek bola salju kemakmuran ke wilayah sekitarnya.",
+    "regressionVariables": [
+      {
+        "variable": "Persentase Informal",
+        "effect": "Negatif Signifikan",
+        "direction": "negative",
+        "description": "Tingginya informalitas menekan produktivitas akibat nihilnya akses permodalan formal dan standarisasi usaha."
+      },
+      {
+        "variable": "Persentase Tamat SMA",
+        "effect": "Negatif pada sektor informalitas",
+        "direction": "negative",
+        "description": "Wilayah dengan rasio pendidikan menengah rendah mengalami keterbatasan adopsi pencatatan keuangan modern."
+      },
+      {
+        "variable": "Rata-rata Upah Riil",
+        "effect": "Negatif terhadap informalitas",
+        "direction": "negative",
+        "description": "Upah rendah berkorelasi dengan daya beli rendah dan perputaran modal usaha mikro yang terbatas."
+      },
+      {
+        "variable": "Tingkat Pengangguran Terbuka",
+        "effect": "Positif terhadap tekanan informalitas",
+        "direction": "positive",
+        "description": "Pengangguran tinggi mendorong peralihan tenaga kerja ke sektor usaha mikro informal demi bertahan hidup."
+      }
+    ]
+  },
+  "clusters": [
+    {
+      "cluster": "Deep Sleepers",
+      "label": "Tertinggal / Deep Sleepers",
+      "color": "rose",
+      "bgColor": "bg-rose-50 dark:bg-rose-950/40",
+      "borderColor": "border-rose-200 dark:border-rose-800",
+      "badgeColor": "danger",
+      "description": "Informalitas sangat tinggi, penetrasi perbankan minimal, dan tingkat pendidikan formal tenaga kerja rendah. Sering terjebak dalam perangkap demografi (low-quality jobs).",
+      "provincesCount": 14,
+      "avgInformalPercentage": 78.4,
+      "avgProductivity": "Rp 32,4 Jt / pekerja / thn",
+      "educationHighSchoolPct": 28.5,
+      "unemploymentRate": 7.2,
+      "recommendedIntervention": "Intervensi GIAT Mode Lite USSD (offline-first), edukasi literasi QRIS dasar, dan plafon mikro tanpa agunan awal Rp2-10 Juta.",
+      "keyProvinces": ["Nusa Tenggara Timur", "Papua", "Papua Barat", "Maluku", "Sulawesi Barat", "NTB"]
+    },
+    {
+      "cluster": "Stirring Giants",
+      "label": "Berkembang / Stirring Giants",
+      "color": "amber",
+      "bgColor": "bg-amber-50 dark:bg-amber-950/40",
+      "borderColor": "border-amber-200 dark:border-amber-800",
+      "badgeColor": "warning",
+      "description": "Volume ekonomi raksasa dan populasi UMKM sangat padat, namun produktivitas per kapita masih menengah. Terjadi anomali: volume tinggi namun nilai tambah belum optimal.",
+      "provincesCount": 13,
+      "avgInformalPercentage": 56.2,
+      "avgProductivity": "Rp 68,7 Jt / pekerja / thn",
+      "educationHighSchoolPct": 54.1,
+      "unemploymentRate": 6.1,
+      "recommendedIntervention": "Digitalisasi penuh GIAT Kasir via QRIS, pemanfaatan GIAT Score untuk kenaikan plafon kredit Rp25-100 Juta dari Bank Himbara dan P2P lending.",
+      "keyProvinces": ["Jawa Barat", "Jawa Tengah", "Jawa Timur", "Sumatera Utara", "Lampung", "Banten"]
+    },
+    {
+      "cluster": "Awakened Leaders",
+      "label": "Maju / Awakened Leaders",
+      "color": "emerald",
+      "bgColor": "bg-emerald-50 dark:bg-emerald-950/40",
+      "borderColor": "border-emerald-200 dark:border-emerald-800",
+      "badgeColor": "success",
+      "description": "Ekosistem ekonomi dan keuangan digital matang, penetrasi QRIS luas, dan produktivitas tenaga kerja tinggi. Menjadi lokomotif inovasi keuangan.",
+      "provincesCount": 7,
+      "avgInformalPercentage": 31.8,
+      "avgProductivity": "Rp 121,2 Jt / pekerja / thn",
+      "educationHighSchoolPct": 82.6,
+      "unemploymentRate": 4.9,
+      "recommendedIntervention": "Integrasi GIAT Connect multi-channel (sindikasi bank dan fintech), pembiayaan ekspansi skala menengah hingga Rp500 Juta.",
+      "keyProvinces": ["DKI Jakarta", "DI Yogyakarta", "Bali", "Kepulauan Riau", "Kalimantan Timur"]
+    }
+  ],
+  "macroStats": {
+    "totalUmkmUnits": "64,2 Juta Unit",
+    "pdbContribution": "61%",
+    "microDominance": "99,9% Usaha Mikro",
+    "largeBusinessShare": "0,1% Usaha Besar",
+    "financingGap": "Rp 2.400 Triliun",
+    "creditStagnationRate": "19% - 20%",
+    "currentCreditDisbursed": "Rp 1.900 Triliun",
+    "targetCreditNeed": "Rp 4.300 Triliun (2026)",
+    "feasibleUmkm": "30 Juta Unit",
+    "bankableUmkm": "10 Juta Unit",
+    "unbankableFeasibleGap": "20 Juta Unit Terjebak"
+  }
+}
