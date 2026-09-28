@@ -13,6 +13,7 @@ interface StatCardProps {
   };
   className?: string;
   badge?: string;
+  accentColor?: "navy" | "gold" | "cyan" | "emerald";
 }
 
 export function StatCard({
@@ -23,42 +24,50 @@ export function StatCard({
   trend,
   className,
   badge,
+  accentColor = "navy",
 }: StatCardProps) {
+  const iconBgStyles = {
+    navy: "bg-[#082046] text-white shadow-sm shadow-[#082046]/20",
+    gold: "bg-amber-100 text-amber-800 border border-amber-300 shadow-sm",
+    cyan: "bg-cyan-100 text-cyan-800 border border-cyan-300 shadow-sm",
+    emerald: "bg-emerald-100 text-emerald-800 border border-emerald-300 shadow-sm",
+  }[accentColor];
+
   return (
     <div
       className={cn(
-        "rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 p-5 shadow-sm hover:shadow-md transition-all",
+        "rounded-2xl border border-blue-100 dark:border-blue-900/40 bg-white dark:bg-[#071c3b] p-5 shadow-sm shadow-blue-950/5 hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-md transition-all",
         className
       )}
     >
       <div className="flex items-center justify-between">
-        <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
+        <span className="text-[11px] font-bold text-slate-500 dark:text-blue-200/60 uppercase tracking-wider">
           {title}
         </span>
         {icon && (
-          <div className="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
+          <div className={cn("p-2 rounded-xl text-xs", iconBgStyles)}>
             {icon}
           </div>
         )}
       </div>
 
-      <div className="mt-3 flex items-baseline gap-2">
-        <h3 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight">
+      <div className="mt-3 flex items-baseline gap-2 flex-wrap">
+        <h3 className="text-2xl sm:text-3xl font-black text-[#082046] dark:text-white tracking-tight">
           {value}
         </h3>
         {badge && (
-          <span className="text-xs px-2 py-0.5 rounded-full font-semibold bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300">
+          <span className="text-[10px] px-2 py-0.5 rounded-full font-bold bg-[#fef3c7] text-[#92400e] border border-[#fcd34d]">
             {badge}
           </span>
         )}
       </div>
 
       {(subtitle || trend) && (
-        <div className="mt-2 flex items-center gap-2 text-xs">
+        <div className="mt-2 flex items-center gap-1.5 text-xs">
           {trend && (
             <span
               className={cn(
-                "inline-flex items-center gap-0.5 font-semibold",
+                "inline-flex items-center gap-0.5 font-bold",
                 trend.isPositive ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"
               )}
             >
@@ -71,7 +80,7 @@ export function StatCard({
             </span>
           )}
           {subtitle && (
-            <span className="text-zinc-500 dark:text-zinc-400 truncate">
+            <span className="text-slate-500 dark:text-blue-200/60 truncate font-medium">
               {subtitle}
             </span>
           )}

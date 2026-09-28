@@ -32,14 +32,14 @@ export function ApiStatusCard() {
   }
 
   return (
-    <Card className="border-blue-500/20 bg-gradient-to-br from-white to-blue-50/30 dark:from-zinc-900 dark:to-blue-950/20 shadow-lg">
+    <Card className="border-blue-200 dark:border-blue-800 bg-white dark:bg-[#071c3b] shadow-xl">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Activity className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            <Activity className="h-5 w-5 text-[#082046] dark:text-blue-300" />
             <CardTitle>Tes API Route (Health Check)</CardTitle>
           </div>
-          <Badge variant={data ? "success" : "default"}>
+          <Badge variant={data ? "success" : "navy"}>
             {data ? "Online" : "Siap Ditest"}
           </Badge>
         </div>
@@ -48,23 +48,23 @@ export function ApiStatusCard() {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="rounded-lg bg-zinc-100 dark:bg-zinc-950 p-4 font-mono text-xs overflow-x-auto border border-zinc-200 dark:border-zinc-800">
+        <div className="rounded-2xl bg-[#f0f7ff] dark:bg-[#061836] p-4 font-mono text-xs overflow-x-auto border border-blue-100 dark:border-blue-900/40">
           {loading ? (
-            <div className="flex items-center gap-2 text-zinc-500">
-              <RefreshCw className="h-4 w-4 animate-spin text-blue-500" />
+            <div className="flex items-center gap-2 text-slate-500">
+              <RefreshCw className="h-4 w-4 animate-spin text-[#0284c7]" />
               <span>Memanggil endpoint /api/health...</span>
             </div>
           ) : error ? (
-            <div className="flex items-center gap-2 text-rose-500">
+            <div className="flex items-center gap-2 text-rose-500 font-bold">
               <AlertCircle className="h-4 w-4" />
               <span>Error: {error}</span>
             </div>
           ) : data ? (
-            <pre className="text-emerald-600 dark:text-emerald-400">
+            <pre className="text-emerald-700 dark:text-emerald-400 font-bold">
               {JSON.stringify(data, null, 2)}
             </pre>
           ) : (
-            <span className="text-zinc-500">
+            <span className="text-slate-500">
               Klik tombol di bawah untuk mengetes komunikasi API.
             </span>
           )}
@@ -73,9 +73,10 @@ export function ApiStatusCard() {
         <div className="flex items-center justify-between">
           <Button
             size="sm"
+            variant="navy"
             onClick={checkApi}
             disabled={loading}
-            className="gap-2"
+            className="gap-2 font-bold cursor-pointer"
           >
             {loading ? (
               <>
@@ -84,14 +85,14 @@ export function ApiStatusCard() {
               </>
             ) : (
               <>
-                <CheckCircle2 className="h-4 w-4" />
+                <CheckCircle2 className="h-4 w-4 text-amber-300" />
                 <span>Trigger API Health</span>
               </>
             )}
           </Button>
 
           {data?.timestamp && (
-            <span className="text-[11px] text-zinc-400">
+            <span className="text-[11px] text-slate-400 font-mono">
               Response: {new Date(data.timestamp).toLocaleTimeString()}
             </span>
           )}

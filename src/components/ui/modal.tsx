@@ -9,7 +9,7 @@ interface ModalProps {
   title: string;
   description?: string;
   children: React.ReactNode;
-  maxWidth?: "sm" | "md" | "lg" | "xl" | "2xl";
+  maxWidth?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl";
 }
 
 export function Modal({
@@ -42,34 +42,36 @@ export function Modal({
     lg: "max-w-lg",
     xl: "max-w-xl",
     "2xl": "max-w-2xl",
+    "3xl": "max-w-3xl",
+    "4xl": "max-w-4xl",
   }[maxWidth];
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-[#082046]/70 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
 
       {/* Modal Card */}
       <div
-        className={`relative w-full ${maxWidthClass} rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl p-6 sm:p-7 z-10 max-h-[90vh] overflow-y-auto`}
+        className={`relative w-full ${maxWidthClass} rounded-3xl border border-blue-200 dark:border-blue-800 bg-white dark:bg-[#071c3b] shadow-2xl p-6 sm:p-7 z-10 max-h-[90vh] overflow-y-auto`}
       >
-        <div className="flex items-start justify-between pb-4 border-b border-zinc-100 dark:border-zinc-800">
+        <div className="flex items-start justify-between pb-4 border-b border-blue-100 dark:border-blue-900/40">
           <div>
-            <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">
+            <h3 className="text-xl font-black text-[#082046] dark:text-white">
               {title}
             </h3>
             {description && (
-              <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+              <p className="mt-1 text-xs sm:text-sm text-slate-500 dark:text-blue-200/70">
                 {description}
               </p>
             )}
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            className="p-1.5 rounded-xl text-slate-400 hover:text-[#082046] dark:hover:text-white hover:bg-blue-50 dark:hover:bg-blue-950 transition-colors cursor-pointer"
             aria-label="Close modal"
           >
             <X className="h-5 w-5" />

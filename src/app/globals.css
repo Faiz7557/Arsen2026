@@ -1,8 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fbff;
+  --foreground: #082046;
+
+  /* Signature Infographic Navy */
+  --giat-navy-950: #041124;
+  --giat-navy-900: #082046;
+  --giat-navy-800: #0d2f60;
+  --giat-navy-700: #13407e;
+  --giat-navy-600: #1b539c;
+
+  /* Signature Infographic Cyan & Royal */
+  --giat-blue-600: #1a56db;
+  --giat-blue-500: #2563eb;
+  --giat-cyan-500: #0ea5e9;
+  --giat-cyan-600: #0284c7;
+  --giat-ice: #f0f7ff;
+  --giat-ice-card: #eaf3fd;
+
+  /* Signature GIAT 3D Amber / Gold */
+  --giat-gold-300: #fef08a;
+  --giat-gold-400: #fbbf24;
+  --giat-gold-500: #f59e0b;
+  --giat-gold-600: #d97706;
+  --giat-gold-700: #b45309;
+
+  /* Cluster Accents */
+  --cluster-deep-sleepers: #082046;
+  --cluster-stirring-giants: #0284c7;
+  --cluster-awakened-leaders: #f59e0b;
 }
 
 @theme inline {
@@ -10,17 +37,120 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-giat-navy-950: var(--giat-navy-950);
+  --color-giat-navy-900: var(--giat-navy-900);
+  --color-giat-navy-800: var(--giat-navy-800);
+  --color-giat-navy-700: var(--giat-navy-700);
+  --color-giat-navy-600: var(--giat-navy-600);
+
+  --color-giat-cyan-500: var(--giat-cyan-500);
+  --color-giat-cyan-600: var(--giat-cyan-600);
+  --color-giat-ice: var(--giat-ice);
+
+  --color-giat-gold-400: var(--giat-gold-400);
+  --color-giat-gold-500: var(--giat-gold-500);
+  --color-giat-gold-600: var(--giat-gold-600);
+  --color-giat-gold-700: var(--giat-gold-700);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #05142b;
+    --foreground: #f0f7ff;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-image: 
+    radial-gradient(at 10% 10%, rgba(14, 165, 233, 0.05) 0px, transparent 50%),
+    radial-gradient(at 90% 90%, rgba(245, 158, 11, 0.04) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(8, 32, 70, 0.03) 0px, transparent 60%);
+  background-attachment: fixed;
+}
+
+/* 3D Embossed Golden GIAT Text Effect */
+.giat-logo-3d {
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  background: linear-gradient(180deg, #fff7c2 0%, #fbbf24 35%, #f59e0b 60%, #b45309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 0 #78350f) drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
+}
+
+/* 3D Title Lettering from Infographic Header */
+.infographic-title-3d {
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-shadow: 
+    0 2px 0 #072a5a,
+    0 4px 0 #051e40,
+    0 6px 12px rgba(4, 17, 36, 0.6);
+}
+
+/* Circular Number Badge from Infographic Sections 1-12 */
+.infographic-number-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background-color: #082046;
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 0.875rem;
+  border: 2px solid #ffffff;
+  box-shadow: 0 4px 8px rgba(8, 32, 70, 0.25);
+  flex-shrink: 0;
+}
+
+/* Infographic Card styling */
+.infographic-card {
+  background: #ffffff;
+  border: 1px solid #dbeafe;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 20px -2px rgba(8, 32, 70, 0.05), 0 2px 6px -1px rgba(8, 32, 70, 0.03);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.infographic-card:hover {
+  border-color: #93c5fd;
+  box-shadow: 0 12px 28px -4px rgba(8, 32, 70, 0.12), 0 4px 10px -2px rgba(8, 32, 70, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Dark mode overrides for cards */
+@media (prefers-color-scheme: dark) {
+  .infographic-card {
+    background: #071c3b;
+    border-color: #163e75;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+  }
+  .infographic-card:hover {
+    border-color: #38bdf8;
+    box-shadow: 0 12px 28px -4px rgba(14, 165, 233, 0.15);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
 }

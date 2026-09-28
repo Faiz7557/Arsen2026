@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#041124" />
+      <stop offset="50%" stop-color="#082046" />
+      <stop offset="100%" stop-color="#0d2f60" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fffbeb" />
+      <stop offset="30%" stop-color="#fde047" />
+      <stop offset="60%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background Shield -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#bgGrad)" stroke="#38bdf8" stroke-width="1.5" />
+  
+  <!-- Subtle Inner Border -->
+  <rect x="5" y="5" width="54" height="54" rx="13" fill="none" stroke="#fbbf24" stroke-width="1" stroke-opacity="0.4" />
+
+  <!-- 3D Golden G Monogram -->
+  <g filter="url(#glow)">
+    <path 
+      d="M39 18 C37 16.5 34.5 15.5 31.5 15.5 C22.5 15.5 16 22.5 16 32 C16 41.5 22.5 48.5 32 48.5 C40 48.5 45.5 43.5 46.5 36 L32 36 L32 29 L54 29 C54.5 31 54.8 33 54.8 35.5 C54.8 47.5 45.5 56 31.8 56 C18 56 8 45.5 8 32 C8 18.5 18 8 32 8 C36.8 8 41.2 9.6 45 12.5 L39 18 Z" 
+      fill="url(#goldGrad)"
+      transform="translate(1, 0) scale(0.96)"
+    />
+  </g>
+</svg>

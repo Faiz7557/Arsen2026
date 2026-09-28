@@ -6,7 +6,7 @@ interface ProgressProps {
   max?: number;
   className?: string;
   barClassName?: string;
-  variant?: "primary" | "success" | "warning" | "danger" | "gradient";
+  variant?: "primary" | "success" | "warning" | "danger" | "gradient" | "gold";
 }
 
 export function Progress({
@@ -19,17 +19,18 @@ export function Progress({
   const percentage = Math.min(100, Math.max(0, (value / max) * 100));
 
   const variantStyles = {
-    primary: "bg-blue-600 dark:bg-blue-500",
+    primary: "bg-[#0284c7]",
     success: "bg-emerald-500",
     warning: "bg-amber-500",
     danger: "bg-rose-500",
-    gradient: "bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-500",
+    gold: "bg-gradient-to-r from-amber-400 to-[#d97706]",
+    gradient: "bg-gradient-to-r from-[#0284c7] via-[#2563eb] to-[#f59e0b]",
   }[variant];
 
   return (
     <div
       className={cn(
-        "w-full h-2.5 bg-zinc-200/80 dark:bg-zinc-800 rounded-full overflow-hidden",
+        "w-full h-2.5 bg-blue-100 dark:bg-blue-950/80 rounded-full overflow-hidden border border-blue-200/40",
         className
       )}
     >

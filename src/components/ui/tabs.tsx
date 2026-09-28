@@ -14,7 +14,7 @@ export function Tabs({ tabs, activeTab, onChange, className }: TabsProps) {
   return (
     <div
       className={cn(
-        "flex flex-wrap items-center gap-1.5 p-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200/80 dark:border-zinc-700/60",
+        "flex flex-wrap items-center gap-1.5 p-1.5 rounded-2xl bg-[#f0f7ff] dark:bg-[#061836] border border-blue-200 dark:border-blue-800 shadow-xs",
         className
       )}
     >
@@ -25,10 +25,10 @@ export function Tabs({ tabs, activeTab, onChange, className }: TabsProps) {
             key={tab.id}
             onClick={() => onChange(tab.id)}
             className={cn(
-              "flex items-center gap-2 px-3.5 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer",
+              "flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer",
               isActive
-                ? "bg-white dark:bg-zinc-900 text-blue-600 dark:text-blue-400 shadow-sm font-semibold"
-                : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-white/50 dark:hover:bg-zinc-700/50"
+                ? "bg-[#082046] text-white shadow-md border border-white/10"
+                : "text-slate-600 dark:text-blue-200 hover:text-[#082046] hover:bg-white/60 dark:hover:bg-white/10"
             )}
           >
             {tab.icon && <span className="shrink-0">{tab.icon}</span>}
@@ -36,10 +36,10 @@ export function Tabs({ tabs, activeTab, onChange, className }: TabsProps) {
             {tab.badge && (
               <span
                 className={cn(
-                  "px-1.5 py-0.5 text-[10px] rounded-full font-bold",
+                  "px-2 py-0.5 text-[10px] rounded-full font-black",
                   isActive
-                    ? "bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300"
-                    : "bg-zinc-200 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300"
+                    ? "bg-amber-400 text-[#082046]"
+                    : "bg-blue-100 text-[#082046] dark:bg-blue-900 dark:text-blue-200"
                 )}
               >
                 {tab.badge}
